@@ -8,16 +8,19 @@ let users = [];
 
 app.get("/timestamp", (req, res) => {
     let timestamp = {
-        Timestamp: new Date().toISOString(),
-        IPAddress: req.ip,
+        timestamp: new Date().toISOString(),
+        ipAddress: req.ip,
         URL: req.url,
-        Protocol: req.protocol,
-        Method: req.method,
-        HostName: req.hostname,
+        protocol: req.protocol,
+        method: req.method,
+        hostName: req.hostname,
+        queryParameter: req.query,
+        requestHeaders: req.headers,
+        userAgent: req.get("User-Agent"),
     }
     const size = fs.statSync("./requestLog.json").size;
     if (size > 1000000) {
-        fs.writeFileSync(`./${timestamp.Timestamp}.json`, JSON.stringify(timestamp) + "\n");
+        fs.writeSync(`./${timestamp.Timestamp}.json`, JSON.stringify(timestamp) + "\n");
     } else {
         fs.appendFileSync("./requestLog.json", JSON.stringify(timestamp) + "\n");
     }
