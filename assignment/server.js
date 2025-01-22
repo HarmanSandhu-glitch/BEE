@@ -1,4 +1,5 @@
 const express = require("express");
+const fs = require("fs");
 
 const app = express();
 app.use(express.json());
@@ -14,6 +15,7 @@ app.get("/timestamp", (req, res) => {
         Method: req.method,
         HostName: req.hostname,
     }
+    fs.appendFileSync("./requestLog.json", JSON.stringify(timestamp) + "\n");
     res.send({ message: "Timestamp", timestamp });
 })
 
