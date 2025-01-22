@@ -5,6 +5,18 @@ app.use(express.json());
 
 let users = [];
 
+app.get("/timestamp", (req, res) => {
+    let timestamp = {
+        Timestamp: new Date().toISOString(),
+        IPAddress: req.ip,
+        URL: req.url,
+        Protocol: req.protocol,
+        Method: req.method,
+        HostName: req.hostname,
+    }
+    res.send({ message: "Timestamp", timestamp });
+})
+
 app.get("/users", (req, res) => {
     res.json({ message: "List of all users", users });
 })
