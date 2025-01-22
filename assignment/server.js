@@ -15,7 +15,12 @@ app.get("/timestamp", (req, res) => {
         Method: req.method,
         HostName: req.hostname,
     }
-    fs.appendFileSync("./requestLog.json", JSON.stringify(timestamp) + "\n");
+    const size = fs.statSync("./requestLog.json").size;
+    if (size > 1000000) {
+        fs.writeFileSync(`./${timestamp.Timestamp}.json`, JSON.stringify(timestamp) + "\n");
+    } else {
+        fs.appendFileSync("./requestLog.json", JSON.stringify(timestamp) + "\n");
+    }
     res.send({ message: "Timestamp", timestamp });
 })
 
