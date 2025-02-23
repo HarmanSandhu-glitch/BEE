@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>All Blogs</title>
+  </head>
+  <body
+    style="
+      background-color: #071630;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+        'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    "
+  >
+    <h1
+      style="margin: auto; width: fit-content; color: aliceblue; padding: 16px"
+    >
+      All Blogs
+    </h1>
+    <div style="display: flex; flex-wrap: wrap; gap: 16px; padding: 8px;">
+      <% blogs.forEach(blog => { %>
+      <div
+        style="
+          background-color: rgba(255, 255, 255, 0.108);
+          color: aliceblue;
+          padding: 16px;
+          /* margin: 16px; */
+          width: fit-content;
+          border: 1px solid white;
+          border-radius: 16px;
+        "
+      >
+        <h2 style="color: aliceblue; font-weight: 800"><%= blog.title %></h2>
+        <p style="color: aliceblue; font-weight: 500; opacity: 80%">
+          <%= blog.content %>
+        </p>
+      </div>
+      <% }) %>
+    </div>
+  </body>
+</html>

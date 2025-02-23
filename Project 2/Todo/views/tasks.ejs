@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>All Todos</title>
+  </head>
+  <body
+    style="
+      background-color: #071630;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+        'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    "
+  >
+    <h1
+      style="margin: auto; width: fit-content; color: aliceblue; padding: 16px"
+    >
+      All Your Todos
+    </h1>
+    <form action="/addTodo" method="POST" style="padding: 8px">
+      <input
+        type="text"
+        name="title"
+        placeholder="Title"
+        style="
+          padding: 8px;
+          margin: 8px;
+          border-radius: 8px;
+          border: 1px solid white;
+          background-color: rgba(255, 255, 255, 0.108);
+          color: aliceblue;
+        "
+      />
+      <input
+        type="text"
+        name="description"
+        placeholder="Content"
+        style="
+          padding: 8px;
+          margin: 8px;
+          border-radius: 8px;
+          border: 1px solid white;
+          background-color: rgba(255, 255, 255, 0.108);
+          color: aliceblue;
+        "
+      />
+
+      <button
+        style="
+          padding: 8px;
+          margin: 8px;
+          border-radius: 8px;
+          border: 1px solid white;
+          background-color: rgba(255, 255, 255, 0.108);
+          color: aliceblue;
+        "
+        type="submit"
+      >
+        Add Todo
+      </button>
+    </form>
+    <div style="display: flex; flex-wrap: wrap; gap: 16px; padding: 8px">
+      <% todos.forEach(todo => { %>
+      <div
+        style="
+          background-color: rgba(255, 255, 255, 0.108);
+          color: aliceblue;
+          padding: 16px;
+          /* margin: 16px; */
+          width: fit-content;
+          border: 1px solid white;
+          border-radius: 16px;
+        "
+      >
+        <h2 style="color: aliceblue; font-weight: 800"><%= todo.title %></h2>
+        <p style="color: aliceblue; font-weight: 500; opacity: 80%">
+          <%= todo.description %>
+        </p>
+      </div>
+      <% }) %>
+    </div>
+  </body>
+</html>
